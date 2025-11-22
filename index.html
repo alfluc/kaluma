@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaluma - Clic Seguro, Navegación Tranquila</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos para el modal (pop-up) usando el elemento <dialog> */
+        dialog {
+            border: none;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 80vw;
+            max-height: 80vh;
+            overflow: auto;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Fondo semi-transparente cuando el modal está abierto */
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilos para el contenido de Misión y Visión */
+        .modal-content h2 {
+            font-size: 1.8rem;
+            color: #5c5c5c; 
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        .modal-content h3 {
+            color: #1c1b1f; 
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+        .modal-content p {
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        /* Estilos para el botón de cerrar */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #757575;
+        }
+        .close-button:hover {
+            color: #1c1b1f;
+        }
+        
+        /* Estilos para la sección de Contacto */
+        .contact-info-modal {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-info-modal p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        .contact-info-modal .material-icons {
+            margin-right: 10px;
+            color: #757575;
+        }
+        .contact-info-modal a {
+             color: #5c5c5c;
+             text-decoration: none;
+        }
+        .contact-info-modal a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="minimal-header">
+        <div class="header-container">
+            <h1 class="header-logo-minimal">Kaluma</h1>
+            <nav class="header-nav">
+                <a href="#" class="nav-button" onclick="document.getElementById('acerca-modal').showModal()">Acerca de</a>
+                <a href="#" class="nav-button" onclick="document.getElementById('contacto-modal').showModal()">Contacto</a>
+            </nav>
+            </div>
+    </header>
+
+    <main class="main-content-minimal">
+        <section id="verification-content" class="search-section-minimal" style="padding-bottom: 50px;">
+            <h2 class="title-kaluma">
+                Verificador de Confiabilidad de Sitios Web
+            </h2>
+            <p class="slogan-minimal">
+                "Clic seguro, navegación tranquila."
+            </p>
+
+            <div class="search-form-minimal"> 
+                <div class="input-group">
+                    <span class="material-icons search-icon">link</span>
+                    <input
+                        type="text"
+                        id="url-input"
+                        placeholder="Pega aquí la URL a validar"
+                        class="url-input-field-minimal"
+                    >
+                </div>
+
+                <button 
+                    type="button" 
+                    class="verify-button" 
+                    id="verify-button"
+                    onclick="verificarUrl()"
+                >
+                    Verificar
+                </button>
+                
+                <a href="index.html" 
+                   class="verify-button reset-button" 
+                   id="reset-button-moved" 
+                   style="display: none;" 
+                   title="Clic para limpiar la URL y hacer un nuevo análisis">
+                    <span class="material-icons" style="margin-right: 8px;">refresh</span>
+                    Nuevo Análisis
+                </a>
+            </div>
+            
+            <section id="result-message-section" style="display: none; flex-direction: column; align-items: center; margin-top: 30px;">
+                <div id="safe-message-box" class="safe-message-box">
+                    <span id="message-icon" class="material-icons">verified_user</span>
+                    <strong id="message-text">Sitio Seguro</strong>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <div class="shieldsoft-logo-container-footer">
+            <img src="Imagen de WhatsApp 2025-10-21 a las 19.07.04_5ad8368e.jpg" alt="Logo de ShieldSoft" class="shieldsoft-logo">
+        </div>
+        <p>© 2025 ShieldSoft. Desarrollado en UTCJ.</p>
+    </footer>
+    
+    <dialog id="acerca-modal">
+        <button class="close-button" onclick="document.getElementById('acerca-modal').close()">
+            <span class="material-icons">close</span>
+        </button>
+        <div class="modal-content">
+            <h2>Acerca de Kaluma y ShieldSoft</h2>
+            
+            <h3>Misión</h3>
+            <p>
+                Desarrollar soluciones digitales innovadoras que brinden confianza y seguridad a los usuarios en 
+                el entorno online. A través de **Kaluma**, ofrecemos una plataforma intuitiva y accesible que analiza 
+                y verifica la autenticidad de sitios web, reduciendo riesgos de fraudes y estafas, y garantizando 
+                una navegación tranquila y confiable en cada clic.
+            </p>
+            
+            <h3>Visión</h3>
+            <p>
+                Ser una empresa reconocida por ofrecer soluciones seguras y confiables que ayuden a las personas 
+                a navegar en internet sin riesgos ni problemas. Buscamos que **ShieldSoft** sea un referente en 
+                innovación y confianza digital. Queremos contribuir a un mundo en línea mejor y más seguro para 
+                todos los usuarios.
+            </p>
+        </div>
+    </dialog>
+    
+    <dialog id="contacto-modal">
+        <button class="close-button" onclick="document.getElementById('contacto-modal').close()">
+            <span class="material-icons">close</span>
+        </button>
+        <div class="modal-content">
+            <h2>Ponte en contacto con ShieldSoft</h2>
+            <p class="slogan-minimal">
+                Estamos aquí para ayudarte con cualquier duda o consulta sobre Kaluma.
+            </p>
+
+            <div class="contact-info-modal">
+                <p>
+                    <span class="material-icons">email</span>
+                    Email: <a href="mailto:soporte@shieldsoft.com">soporte@shieldsoft.com</a>
+                </p>
+                <p>
+                    <span class="material-icons">phone</span>
+                    Teléfono: <a href="tel:+526561234567">+52 (656) 123 4567</a>
+                </p>
+                <p>
+                    <span class="material-icons">location_on</span>
+                    Ubicación: Av. Universidad Tecnológica 3051, Col, Lote Bravo, 32695 Juárez, Chih..
+                </p>
+            </div>
+        </div>
+    </dialog>
+    
+    <script>
+        function verificarUrl() {
+            // 1. Ocultar botón "Verificar" y mostrar "Nuevo Análisis"
+            document.getElementById('verify-button').style.display = 'none';
+            document.getElementById('reset-button-moved').style.display = 'flex'; 
+
+            // 2. Obtener los elementos que vamos a modificar
+            const urlInput = document.getElementById('url-input').value.toLowerCase().trim();
+            const resultSection = document.getElementById('result-message-section');
+            const messageBox = document.getElementById('safe-message-box');
+            const messageIcon = document.getElementById('message-icon');
+            const messageText = document.getElementById('message-text');
+
+            // Mostrar la sección de resultado
+            resultSection.style.display = 'flex';
+            
+            // 💡 MUY IMPORTANTE: Resetear los estilos en línea y la clase antes de aplicar la nueva
+            messageBox.style.cssText = ''; 
+            
+            // 3. Lógica de verificación
+            if (urlInput.includes("mercadolibre.com") || urlInput.includes("coppel.com") || urlInput.includes("aliexpress.com")) { 
+                // CASO SITIO SEGURO/BUENA REPUTACIÓN (Verde): Incluye mercadolibre.com, aliexpress.com Y coppel.com
+                messageBox.className = 'safe-message-box';
+                messageIcon.textContent = 'verified_user';
+                messageText.textContent = 'Sitio Seguro - Reputación Confiable';
+                
+            } else if (urlInput.includes("https://mx.aliexpresss.com/")) { 
+                // CASO SITIO PELIGROSO/ESTAFA (Rojo)
+                messageBox.className = 'safe-message-box danger-message-box';
+                messageIcon.textContent = 'warning'; 
+                messageText.textContent = '¡Peligro! Alto riesgo de estafa (Verifique la URL)';
+
+            } else {
+                // CASO POR DEFECTO: Muestra el cuadro rojo de peligro 🚩
+                messageBox.className = 'safe-message-box danger-message-box';
+                messageIcon.textContent = 'warning'; 
+                messageText.textContent = '¡Peligro! Alto riesgo de estafa (Verifique la URL)';
+            }
+        }
+    </script>
+    </body>
+</html>

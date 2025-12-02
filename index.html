@@ -225,13 +225,13 @@
             messageBox.style.cssText = ''; 
             
             // 3. Lógica de verificación
-            if (urlInput.includes("mercadolibre.com") || urlInput.includes("coppel.com") || urlInput.includes("aliexpress.com")) { 
+            if (urlInput.includes("mercadolibre.com") || urlInput.includes("coppel.com") || urlInput.includes("aliexpress.com") || urlInput.includes("amazon.com")) { 
                 // CASO SITIO SEGURO/BUENA REPUTACIÓN (Verde): Incluye mercadolibre.com, aliexpress.com Y coppel.com
                 messageBox.className = 'safe-message-box';
                 messageIcon.textContent = 'verified_user';
                 messageText.textContent = 'Sitio Seguro - Reputación Confiable';
                 
-            } else if (urlInput.includes("https://mx.aliexpresss.com/")) { 
+            } else if (urlInput.includes("https://mx.aliexpresss.com/") || urlInput.includes("mercadolibree.com") || urlInput.includes("aamazon.com")) { 
                 // CASO SITIO PELIGROSO/ESTAFA (Rojo)
                 messageBox.className = 'safe-message-box danger-message-box';
                 messageIcon.textContent = 'warning'; 
@@ -246,4 +246,5 @@
         }
     </script>
     </body>
+
 </html>
